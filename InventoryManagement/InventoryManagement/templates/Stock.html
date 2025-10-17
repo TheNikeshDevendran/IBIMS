@@ -1,0 +1,36 @@
+    {% load static %}
+    <div id="Stock" class="hide TotalProduct outOfStock">
+        
+       <div>
+        <a  href='#' id="mail" >SEND MAIL</a>
+        &nbsp;&nbsp;&nbsp;
+        <a href="/vendor/" id="vendor">Vendors</a>
+        <!-- <p id="mail-status" class="hide"></p> -->
+       </div>
+        {% if stocks %}
+        <table>
+            <thead>
+                <th>ProductName</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </thead>
+            <tbody>
+                {% for stock in stocks %}
+                <tr>
+                    <td>{{stock.0}}</td>
+                    <td>{{stock.1}}</td>
+                    <td>{{stock.2}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% else %}
+        <p class="FullStock">
+            <img src="{%static 'FullStock.png'%}" style='width: 200px;' alt=""><br>
+            Currently Stocks are good
+        </p>
+
+        {% endif %}
+
+    </div>

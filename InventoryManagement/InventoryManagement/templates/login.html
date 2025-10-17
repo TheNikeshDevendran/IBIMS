@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InventoryManagement</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+
+</head>
+
+<body>
+  
+    <div id="hero" >
+        <div id="intro">
+
+            <h2 style="color: #ff8800;">Interprise Billing and Management System</h2>
+            <p>Join us and simplify your business with our all-in-one Inventory Management and Billing System! Easily
+                track stock, manage products, and generate professional invoices in seconds. Our software keeps your
+                inventory updated in real-time and provides insightful reports to help you make smarter decisions.
+                Perfect for retailers, wholesalers, and growing businesses—start managing smarter today! </p>
+        </div>
+        <div id="container">
+            <img src="{% static 'login.gif' %}" alt="" id="logo">
+            <h2>Sign-In</h2>
+            <form method="POST" id="loginForm">
+                {% csrf_token %}
+                <input type="text" name="username" id="email" placeholder="Enter Username" required
+                    class="inputs"><br><br>
+                <input type="text" name="csrfmiddlewaretoken" value="sdjhcsdkb"  style="display: none;">
+                <input type="password" name="password" id="password" placeholder="Enter Password" required
+                    class="inputs"><br><br>
+                <p id="err-msg" style="color: red;"></p>
+                <input type="submit" name="submit"  value="Sign-In" class="btns">
+            </form>
+        </div>
+
+    </div>
+    <script src="{% static 'emailverification.js' %}"></script>
+</body>
+</html>

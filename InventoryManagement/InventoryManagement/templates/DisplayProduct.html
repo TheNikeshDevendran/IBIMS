@@ -1,0 +1,24 @@
+    <div id="TotalProduct" class="TotalProduct">
+        <table>
+            <thead>
+                <th>ProductName</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
+                {% for product in TotalProduct %}
+                <tr>
+                    <td>{{product.0}}</td>
+                    <td>{{product.1}}</td>
+                    <td>{{product.2}}</td>
+                    <td><a href="/edit_by_name/{{product.0}}" class="activity-btn"><i class="ri-edit-line"></i>Edit</a>
+                    </td>
+                    <td><a href="/deactive/{{product.0}}" class="activity-btn"><i
+                                class="ri-delete-bin-line"></i>Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>

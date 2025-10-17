@@ -1,0 +1,34 @@
+    <div id="AddProduct" class="hide ">
+       <div id="AddProductContainer">
+        <div id="SingleItem">
+            <form class="SingleItem" method="POST">
+                <center class="SingleItemHeading">Add Single Item</center>
+            {% csrf_token %}
+            <label >ProductName</label><br>
+            <input type="text" name="pname" id="pname" value="" class="inp" required> <br>
+
+            <label >ProductQuantity</label><br>
+            <input type="text" name="pqnt" id='pqnt' value="" class="inp" required> <br>
+
+            <label >ProductPrice</label><br>
+            <input type=number name="price" id="price" value="" class="inp" required> <br><br>
+
+             <label>Barcode No:</label><br>
+            <input type=text name="pcode" id="pcode" value="" class="inp" required> <br><br>
+            <p id="SingleItemResponse"></p>
+            <input type="submit" value="Add" id="sub-btn">
+        </form>
+        </div>
+
+        <div id="AddExcel">
+            <form method="POST" enctype="multipart/form-data" id="uploadExcel">
+                               <center class="SingleItemHeading">upload Via ExcelSheet</center>
+                {% csrf_token %}
+                <input type="file" name="dataSheet" id="File"  accept=".xls, .xlsx, application/vnd.ms-excel">
+                <p style="margin-top: 2px;margin-left: 31px;padding: 0px;" >*please upload a excel file</p>
+                <input type="submit" id="submit-btn" value='Add'>
+            </form><br>
+            <p id="exl-msg"></p>
+        </div>
+       </div>
+    </div>

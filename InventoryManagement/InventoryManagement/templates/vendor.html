@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendors</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor.css' %}">
+</head>
+
+<body>
+    <div id="hero">
+        <a href="" id="Cname">IBIMS</a>
+        <a href="#" class="bg" onclick="display('vendorCon')">Vendors</a>
+        <a href="#" class="bg" onclick="display('CustomerCon')">Customer Info</a>
+        <a href="/dashboard/" class="bg">Back To Dashboard</a>
+    </div>
+
+    <!-- <div id="vendorCon" >
+        <div id="vendor">
+       <summary>{{ vendors.vendor_name }}</summary>
+               <p><b>Address:</b> {{ v.address }}</p>
+
+       {% for v in vendors %}
+      <div class="info">
+        <p><b>product:</b> {{ v.product }}</p>
+        <p><b>Quantity:</b> {{ v.quantity }}</p>
+        <p><b>Store:</b> {{ v.store_name }}</p>
+      </div>
+  {% endfor %}
+        </div>
+
+    </div> -->
+
+    <div id="vendorCon">
+    <div id="vendor">
+        <!-- <div class="info">
+           
+        </div> -->
+        <table id="ventbl">
+            <thead>
+            <th>Vendor Nme</th>
+            <th>Shop ddress</th>
+            <th>Product nme</th>
+            <th>nt</th>
+            <th>price</th>
+            </thead>
+            
+           <tbody>
+            {% for vendor in vendors %}
+            <tr>
+                <td>{{vendor.5}}</td>
+                <td>{{vendor.6}}</td>
+                <td>{{vendor.0}}</td>
+                <td>{{vendor.1}}</td>
+                <td>{{vendor.2}}</td>
+            </tr>
+            {% endfor %}
+           </tbody>
+        </table>
+    </div>
+</div>
+
+    <div id="CustomerCon"  class="hide">
+          {% include "customerbill.html" %}
+    </div>
+</body>
+
+<script>
+    function display(id) {
+        if (id == 'vendorCon') {
+            document.getElementById(id).classList.remove('hide');
+            document.getElementById('CustomerCon').classList.add('hide');
+        }
+        else if (id == 'CustomerCon') {
+            document.getElementById(id).classList.remove('hide');
+            document.getElementById('vendorCon').classList.add('hide');
+
+        }
+    }
+</script>
+
+</html>

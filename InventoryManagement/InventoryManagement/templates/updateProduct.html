@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InventoryManagement</title>
+    <link rel="stylesheet" href="{% static 'updateProduct.css'%}">
+            <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+</head>
+<body>
+    <div class="nav">
+        <h2>Inventory Management</h2>
+        <a href="" id="back-btn"><i class="ri-arrow-left-fill"></i>Back To Dashbord</a>
+    </div>
+
+    <div id="update-form">
+        <img src="{% static 'update.png' %}" alt="" id="banner">
+        <form action="/updateStock/{{data.0}}/" method="POST">
+            {% csrf_token %}
+            <label >ProductName</label><br>
+            <input type="text" name="pname" value="{{data.0}}" class="inp"> <br>
+
+            <label >ProductQuantity</label><br>
+            <input type="text" name="pqnt" value="{{data.1}}" class="inp"> <br>
+
+            <label >ProductPrice</label><br>
+            <input type=number name="price" value="{{data.2}}" class="inp"> <br><br>
+
+            <input type="submit" value="Update" id="sub-btn">
+        </form>
+    </div>
+</body>
+</html>

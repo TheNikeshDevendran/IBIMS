@@ -1,0 +1,57 @@
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("loginForm").addEventListener("submit", async function (event) {
+        event.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        let errmsg = document.getElementById("err-msg");
+        try {
+      
+            // const response = await fetch("/EmailValidator/", {
+            //     method: "POST",
+            //     headers: { "Content-Type": "application/json", "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value },
+            //     body: JSON.stringify({ email: email }),
+            // });
+
+            // if (!response.ok) {
+            //     throw new Error(`Server error: ${response.status}`);
+            // }
+            // // errmsg.innerHTML='Validation may Take Few Seconds';
+            // const data = await response.json();
+            // console.log("API Response:", data);
+            // const result = data.gamalogic_emailid_vrfy[0];
+            // const isValid = result.is_valid;
+
+            // if (isValid) {
+                errmsg.innerHTML='Validating...'
+                const authResponse = await fetch("/Authenticate/", {
+                method: "POST",
+                headers: { 
+                    "Content-Type": "application/json", 
+                    "X-CSRFToken":  document.querySelector("[name=csrfmiddlewaretoken]").value 
+                },
+                body: JSON.stringify({ email, password })
+            });
+
+            if (!authResponse.ok) {
+                throw new Error(`Auth API error: ${authResponse.status}`);
+            }
+
+            const authData = await authResponse.json();
+            console.log("Auth Response:", authData);
+
+            if (authData.success) {
+                // localStorage.setItem("userRole", authData.role);
+                // console.log(authData.role);
+                window.location.href = authData.redirect_url;
+            } else {
+                errmsg.innerHTML="Invalid gmail or password.";
+            }
+            // else {
+            //     errmsg.innerHTML="Invalid gmail or password.";
+            // }
+
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    });
+});

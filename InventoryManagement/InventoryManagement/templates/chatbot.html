@@ -1,0 +1,43 @@
+{% load static %}
+<div id="chatbot" class="hide">
+    <div id="chatbot_con">
+        <form method="POST"  id="geminiForm">
+            {% csrf_token %}
+            <input type="text" name="file" id="i_file" placeholder="ask inventory management based query?"><br><br>
+            <input type="hidden" name="csrfmiddlewaretoken">
+            <input type="submit" value="analyse" id='i_btn'>
+        </form>
+    </div>
+
+    <div id="responseBox">
+        <img src="{% static 'ai.gif'%}" alt="" width="200px">
+    </div>
+
+    <script>
+        document.getElementById("geminiForm").addEventListener('submit',(e)=>{
+            e.preventDefault();
+            const input = document.getElementById('i_file').value;
+            // const formData = new FormData(form);
+            const csrftoken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+            document.getElementById("responseBox").innerHTML="generting...";
+            fetch('/gemini/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                },
+                body: JSON.stringify({ user_input: input }) 
+            })
+                .then(r => r.json())
+                .then(data => {
+                    const output = document.getElementById("responseBox");
+                    if (data.response) {
+                        output.innerText = "🤖 Gemini: " + data.response;
+                    } else {
+                        output.innerText = "Error: " + (data.error || "Unknown error");
+                    }
+                });
+        })
+              
+    </script>
+</div>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>elo</p>
+    <p>elo</p>
+    <p>elo</p>
+    <div id="printCart" style="padding: 20px; background-color: #f5f5f5; width: 300px; border: 1px solid #ccc;">
+  <h3><b>Cart</b> <span style="float: right;">🛒 4</span></h3>
+  <p><a href="#">Product 1</a> <span style="float: right;">$15</span></p>
+  <p><a href="#">Product 2</a> <span style="float: right;">$5</span></p>
+  <p><a href="#">Product 3</a> <span style="float: right;">$8</span></p>
+  <p><a href="#">Product 4</a> <span style="float: right;">$2</span></p>
+  <hr>
+  <p><b>Total</b> <span style="float: right;"><b>$30</b></span></p>
+</div>
+
+<!-- Print button -->
+<button onclick="printDiv('printCart')">Print Cart</button>
+<script>
+function printDiv(divId) {
+  const printContents = document.getElementById(divId).innerHTML;
+  const originalContents = document.body.innerHTML;
+
+  document.body.innerHTML = printContents;
+  window.print();
+  document.body.innerHTML = originalContents;
+  location.reload(); // To rebind JS and restore UI
+}
+</script>
+
+</body>
+</html>

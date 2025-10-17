@@ -1,0 +1,43 @@
+<div id="staff" class="hide">
+    <div id="AddStaff">
+        <h2><u>AddStaff</u></h2>
+      <form id="staffForm" >
+        {% csrf_token %}
+        <select name="role" id="role" class="staffInput">
+            <option value="staff">staff</option>
+            <option value="admin">admin</option>
+        </select>
+        <input type="text" placeholder="name" name="name" id="name" class="staffInput">
+        <input type="email" placeholder="email" name="email" id="email" class="staffInput">
+        <input type="password" placeholder="password" name="password" id="password" class="staffInput">
+        <input type="button" value="AddStaff" class="staffInputBtn" id="CreateStaff">
+      </form>
+    </div>
+
+    <div style="padding:9px">
+       <table id="staffInfo">
+            <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Password</th>
+            <th>Status</th>
+            </thead>
+            
+           <tbody>
+            {% for staffInfo in staff %} 
+            <tr>
+                <td>{{staffInfo.0}}</td>
+                <td>{{staffInfo.1}}</td>
+                <td>{{staffInfo.2}}</td>
+                <td>{{staffInfo.3}}</td>
+                <td>{{staffInfo.4}}</td>
+                <td><a href="/FreeseStaff/{{staffInfo.2}}">Freese</a></td>
+            </tr>
+            {% endfor %} 
+           </tbody>
+        </table>
+    </div>
+</div>
+<script src=""></script>

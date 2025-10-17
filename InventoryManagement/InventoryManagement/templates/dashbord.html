@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InventoryManagement</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'dashbord.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div class="nav">
+        <div style="display: flex;justify-content: space-between;">
+        <h2>Inventory Management </h2>
+        <div>
+         <h3><i class="ri-group-line"></i>{{name}}||{{role}}</h3>
+        </div>
+        </div>
+            <div class="tab-container">
+            <div class="tabs" onclick="display('TotalProduct')"><i class="ri-store-line "></i>Total Products </div>
+            <div class="tabs" onclick="display('Stock')"><i class="ri-shopping-cart-line "></i>Out of Stock</div>
+            <div class="tabs" onclick="display('AddProduct')"><i class="ri-database-2-line "></i>Add Product</div>
+            <div class="tabs" onclick="display('Sale')"><i class="ri-bar-chart-2-line "></i>Total Sale</div>
+            <div class="tabs" onclick="display('TakeAway')"><i class="ri-bill-line"></i>Billing</div>
+            {% if role == "admin" %} 
+            <div class="tabs" onclick="display('staff')"><i class="ri-bill-line"></i>staff</div>
+            <div class="tabs" onclick="display('chatbot')"><i class="ri-bill-line"></i>chatbot</div>
+            {% endif %}
+            <!-- <div class="tabs" onclick="display('')"><i class="ri-bill-line"></i>CustomerInfo</div> -->
+            <div class="tabs"> <i class="ri-logout-box-line "></i><a href="/" id="logout">logout</a></div>
+        </div>
+    </div>
+
+   {% include "DisplayProduct.html" %}
+   {% include "Stock.html" %}
+   {% include "Addproduct.html" %}
+   {% include "TakeAway.html" %}
+   {% include "salechart.html" %}
+   {% include "chatbot.html" %}
+   {% include "staff.html" %}
+
+
+    <script src="{% static 'dashbord.js' %}"></script>
+    <script src="{% static 'GeneratingInvoice.js' %}"></script>
+    <script src="{% static 'graph.js' %}"></script>
+    <script src="{% static 'AddProduct.js' %}"></script>
+    <script src="{% static 'barcodeScanner.js' %}"></script>
+    <script src="{% static 'staffInfo.js' %}"></script>
+
+    <script src="{% static 'emailverification.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('load', GenerateBarGraph('{{itemInstock|safe}}'))
+    </script>
+</body>
+
+</html>

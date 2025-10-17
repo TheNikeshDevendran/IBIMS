@@ -1,0 +1,21 @@
+<input type="email" id="email" placeholder="Enter email">
+<button id="checkBtn">Check Email</button>
+
+<script>
+const apiKey = "f045fc4fdd164230837edb936a96eb7c"; // Replace with your key
+
+document.getElementById("checkBtn").addEventListener("click", () => {
+    const email = document.getElementById("email").value;
+
+    fetch(`https://api.zerobounce.net/v2/validate?api_key=${apiKey}&email=${encodeURIComponent(email)}&ip_address=`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === "valid") {
+          alert("✅ This email is valid!");
+        } else {
+          alert(`❌ Invalid email: ${data.status}`);
+        }
+      })
+      .catch(err => console.error(err));
+});
+</script>

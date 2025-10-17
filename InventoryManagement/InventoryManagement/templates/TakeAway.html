@@ -1,0 +1,125 @@
+ <div id="TakeAway" class="hide  billing">
+        <div id="TakeAway-container">
+            <form method="POST" id="invoice-form">
+                {% csrf_token %}
+                <h1 id="invoice-head"><i class="ri-bill-line"></i>GeneratingInvoice</h1>
+                <div id="bill-form" class="colForm">
+                    <div id="productBillSection" class="bill-bg">
+                        <div class="row">
+                            <div>
+                                <label for="">ProductCode</label><br>
+                                <input type="text" id="barcodeInput" name="barcode"  class="inputs"
+                                    placeholder="Scan barcode">
+                            </div>
+
+                            <div>
+                                <label for="">ProductName</label><br>
+                                <input type="text" id="ProductName" name="ProductName" placeholder="ProductName" class="inputs" readonly>
+                            </div>
+
+                            <div class="hide">
+                                <label for="">ProductCode</label><br>
+                                <input type="text" id="Pcode" name="Pcode" class="inputs hide">
+
+                            </div>
+
+                            <div>
+                                <label for="">Quantity</label><br>
+                                <input type="number" id="Qnt" name="Qnt" placeholder="Quantity" class="inputs">
+                            </div>
+
+                            <div>
+                                <label for="">TotalPrice</label><br>
+                                <input type="number" id="Price" readonly name="Price" value=""
+                                    placeholder="price" class="inputs">
+                            </div>
+                        
+                        </div>
+                        <div class="row">
+                            <!-- i am adding this for some space btwn the row -->
+                            <p></p>
+                        </div>
+
+                        <div class="row">
+                            <div>
+                                <label for="">CustomerName</label><br>
+                                <input type="text" id="Cname" name='Cname' placeholder="Customer Name" class="inputs">
+                                <input type="hidden"  name='csrfmiddlewaretoken' >
+
+                            </div>
+
+                            <div>
+                                <label for="">MobileNo</label><br>
+                                <input type="text" id="Cmob" name='Cmob' maxlength="10" pattern="[0-9]{10}"  placeholder="MobileNo" class="inputs">
+                            </div>
+
+                            <div>
+                                <label for="">Full/HalfPayment</label><br>
+                                <select name="full-half" class="inputs" id="Full-Half">
+                                    <option value="FullPayment">FullPayment</option>
+                                    <option value="HalfPayment">HalfPayment</option>
+                                </select>
+                            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <div>
+                                <label for="">PaymentMode</label><br>
+                                <select name="PaymentMode" id="PaymentMode" class="inputs">
+                                    <option>SelectPaymentMode</option>
+                                    <option value="cash">Cash</option>
+                                    <option value="online">Online</option>
+                                </select>
+                            </div>
+
+                          
+                            <div class="hide DueDate">
+                                <label for="">DueEndDate</label><br>
+                                <input type="date"  name='Enddate' id="duedate" placeholder="DueEndDate" class="inputs" readonly>
+                            </div>
+
+                        
+
+                        </div>
+
+                        <div class="row">
+                             <div>
+                                <label for=""></label><br>
+                                <input type="button" value="ScanNext" id="scanNext" class="invoice-btn">
+                            </div>&nbsp;&nbsp;&nbsp;
+                            <div>
+                                <label for=""></label><br>
+                                <input type="button" value="Sale" id="sale" class="invoice-btn">
+                            </div>&nbsp;&nbsp;&nbsp;
+                           
+                              <div>
+                                <label for=""></label><br>
+                                <input type="reset" value="Cancel" class="invoice-btn">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div id="displayInvoice">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
+        </div>
+
+       <div id="PurchasingItem" >
+        <table border="1px">
+            <thead>
+                <th>ProductName</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </thead>
+            <tbody  id="cart-body">
+              <tr><td>The billing data will be display here</td></tr>
+            </tbody>
+        </table>
+        </div>
+     
+
+    </div>

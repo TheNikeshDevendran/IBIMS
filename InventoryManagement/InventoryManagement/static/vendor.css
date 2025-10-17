@@ -1,0 +1,100 @@
+*body{
+    margin: 0;
+    padding: 0;
+    font-family: math;
+}
+
+#hero{
+ background-color: #11223e;
+    margin-top: -8px;
+    padding: 28px;
+    color: #e9e4e4;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+#hero>a{
+    color: rgb(198, 197, 197);
+     font-size: 15px;
+    text-decoration: none;
+    transition: all ease 2s;
+
+
+}
+
+#Cname{
+        font-style: italic;
+    font-family: math;
+    font-weight: 900;
+    font-size: 162%;
+    /* text-decoration: underline; */
+
+}
+
+/* .bg{
+    border-radius: 8px;
+    transition: all ease ease-out 2;
+    padding:8px;
+} */
+
+.bg:hover{
+      cursor: pointer;
+    background-color: #88d3ed;
+    transform: scale(1.1);
+    padding: 6px;
+    border-radius: 4px;
+
+}
+
+.hide{
+    display: none;
+}
+
+#billCon{
+    display:flex;
+    justify-content: center;
+    align-items:center ;
+}
+
+
+
+/* #ventbl{ */
+     /* display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 22px; */
+     /* width: 100%;  
+    text-align: center;
+    border: 2px solid;
+    border-collapse: collapse;
+    background-color: rebeccapurple; */
+/* }  */
+
+#ventbl {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#ventbl thead {
+    background-color: #6392be;
+    color: white;
+}
+
+#ventbl th, #ventbl td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+#ventbl tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#ventbl tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
